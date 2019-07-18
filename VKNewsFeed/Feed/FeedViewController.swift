@@ -19,7 +19,7 @@ class FeedViewController: UIViewController {
         
         fetecher.getFeed { (feedResponse) in
             guard let feedResponse = feedResponse else { return }
-            //
+            ///
             feedResponse.items.map({ (feedItem) in
                 print(feedItem.likes?.count)
             })
