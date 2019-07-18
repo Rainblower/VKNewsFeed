@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		10239FCE22E0550F00B1C1B3 /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10239FCD22E0550F00B1C1B3 /* NetworkService.swift */; };
+		10239FD022E057BB00B1C1B3 /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10239FCF22E057BB00B1C1B3 /* API.swift */; };
+		10239FD322E0682700B1C1B3 /* FeedResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10239FD222E0682700B1C1B3 /* FeedResponse.swift */; };
+		10239FD522E06B0D00B1C1B3 /* NetworkDataFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10239FD422E06B0D00B1C1B3 /* NetworkDataFetcher.swift */; };
 		10AE51DA22DF3D0C002E8648 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10AE51D922DF3D0C002E8648 /* AppDelegate.swift */; };
 		10AE51E122DF3D0E002E8648 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 10AE51E022DF3D0E002E8648 /* Assets.xcassets */; };
 		10AE51E422DF3D0E002E8648 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 10AE51E222DF3D0E002E8648 /* LaunchScreen.storyboard */; };
@@ -20,6 +24,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		10239FCD22E0550F00B1C1B3 /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
+		10239FCF22E057BB00B1C1B3 /* API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
+		10239FD222E0682700B1C1B3 /* FeedResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedResponse.swift; sourceTree = "<group>"; };
+		10239FD422E06B0D00B1C1B3 /* NetworkDataFetcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkDataFetcher.swift; sourceTree = "<group>"; };
 		10AE51D622DF3D0C002E8648 /* VKNewsFeed.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VKNewsFeed.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		10AE51D922DF3D0C002E8648 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		10AE51E022DF3D0E002E8648 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -46,6 +54,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		10239FD122E0681500B1C1B3 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				10239FD222E0682700B1C1B3 /* FeedResponse.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
 		10AE51CD22DF3D0C002E8648 = {
 			isa = PBXGroup;
 			children = (
@@ -89,7 +105,11 @@
 		10AE51F122DF4502002E8648 /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				10239FD122E0681500B1C1B3 /* Models */,
+				10239FCF22E057BB00B1C1B3 /* API.swift */,
 				10AE51EF22DF44FE002E8648 /* AuthService.swift */,
+				10239FCD22E0550F00B1C1B3 /* NetworkService.swift */,
+				10239FD422E06B0D00B1C1B3 /* NetworkDataFetcher.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -214,11 +234,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				10239FD322E0682700B1C1B3 /* FeedResponse.swift in Sources */,
 				10AE51F022DF44FE002E8648 /* AuthService.swift in Sources */,
 				10AE51F522DF4848002E8648 /* AuthViewController.swift in Sources */,
 				10AE51FA22DF5160002E8648 /* FeedViewController.swift in Sources */,
 				10AE51FF22DF5430002E8648 /* UIViewController+Storyboard.swift in Sources */,
+				10239FCE22E0550F00B1C1B3 /* NetworkService.swift in Sources */,
+				10239FD522E06B0D00B1C1B3 /* NetworkDataFetcher.swift in Sources */,
 				10AE51DA22DF3D0C002E8648 /* AppDelegate.swift in Sources */,
+				10239FD022E057BB00B1C1B3 /* API.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
