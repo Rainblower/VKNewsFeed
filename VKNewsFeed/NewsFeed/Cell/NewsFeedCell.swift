@@ -38,6 +38,7 @@ class NewsFeedCell: UITableViewCell {
     }
     
     func set(viewModel: FeedCellViewModel) {
+        iconImageView.set(imageUrl: viewModel.iconUrlString)
         nameLabel.text = viewModel.name
         dateLabel.text = viewModel.date
         postLabel.text = viewModel.text
