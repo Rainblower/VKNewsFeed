@@ -14,13 +14,21 @@ protocol NewsfeedBusinessLogic {
 
 class NewsfeedInteractor: NewsfeedBusinessLogic {
 
-  var presenter: NewsfeedPresentationLogic?
-  var service: NewsfeedService?
+    var presenter: NewsfeedPresentationLogic?
+    var service: NewsfeedService?
+    
+    private var fetcher: DataFetcher = NetworkDataFetcher(networking: NetworkService())
   
-  func makeRequest(request: Newsfeed.Model.Request.RequestType) {
-    if service == nil {
-      service = NewsfeedService()
+    func makeRequest(request: Newsfeed.Model.Request.RequestType) {
+        if service == nil {
+            service = NewsfeedService()
+        }
+    
+        switch request {
+            
+        case .getNewsFeed:
+            <#code#>
+
+        }
     }
-  }
-  
 }

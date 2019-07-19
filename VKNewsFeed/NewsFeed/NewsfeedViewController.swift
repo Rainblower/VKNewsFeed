@@ -14,21 +14,13 @@ protocol NewsfeedDisplayLogic: class {
 
 class NewsfeedViewController: UIViewController, NewsfeedDisplayLogic {
 
-  var interactor: NewsfeedBusinessLogic?
-  var router: (NSObjectProtocol & NewsfeedRoutingLogic)?
+    var interactor: NewsfeedBusinessLogic?
+    var router: (NSObjectProtocol & NewsfeedRoutingLogic)?
+    
+     private var feedViewModel = FeedViewModel.init(cells: [])
 
-  // MARK: Object lifecycle
-  
-  override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
-    super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
-    setup()
-  }
-  
-  required init?(coder aDecoder: NSCoder) {
-    super.init(coder: aDecoder)
-    setup()
-  }
-  
+    @IBOutlet weak var table: UITableView!
+    
   // MARK: Setup
   
   private func setup() {
@@ -42,19 +34,45 @@ class NewsfeedViewController: UIViewController, NewsfeedDisplayLogic {
     presenter.viewController  = viewController
     router.viewController     = viewController
   }
-  
-  // MARK: Routing
-  
-
-  
+    
   // MARK: View lifecycle
   
   override func viewDidLoad() {
     super.viewDidLoad()
+    setup()
+    
+    table.register(UINib(nibName: "NewsFeedCell", bundle: nil), forCellReuseIdentifier:  NewsFeedCell.reuseId)
+    
+    interactor?.makeRequest(request: .getNewsFeed)
   }
   
-  func displayData(viewModel: Newsfeed.Model.ViewModel.ViewModelData) {
+    func displayData(viewModel: Newsfeed.Model.ViewModel.ViewModelData) {
+        switch viewModel {
+        
+        case .some:
+            print(".some ViewController")
+        case .displayNewsFeed:
+            print(".displayNewsFeed ViewController")
+        
+        }
+    }
+  
+}
 
-  }
-  
+extension NewsfeedViewController: UITableViewDelegate, UITableViewDataSource {
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return feedViewModel.cells.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: NewsFeedCell.reuseId, for: indexPath) as! NewsFeedCell
+        let cellViewModel = feedViewModel.cells[indexPath.row]
+        cell.set(viewModel: cellViewModel )
+        return cell
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 212
+    }
 }

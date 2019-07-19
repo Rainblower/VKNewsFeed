@@ -13,10 +13,17 @@ protocol NewsfeedPresentationLogic {
 }
 
 class NewsfeedPresenter: NewsfeedPresentationLogic {
-  weak var viewController: NewsfeedDisplayLogic?
+    weak var viewController: NewsfeedDisplayLogic?
   
-  func presentData(response: Newsfeed.Model.Response.ResponseType) {
+    func presentData(response: Newsfeed.Model.Response.ResponseType) {
   
-  }
-  
+        switch response {
+    
+        case .some:
+            print(".some Presenter")
+        case .presentNewsFeed:
+            print(".presentNewsFeed Presenter")
+            viewController?.displayData(viewModel: .displayNewsFeed)
+        }
+    }
 }
