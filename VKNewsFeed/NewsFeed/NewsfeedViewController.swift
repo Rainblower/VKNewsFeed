@@ -9,7 +9,7 @@
 import UIKit
 
 protocol NewsfeedDisplayLogic: class {
-  func displayData(viewModel: Newsfeed.Model.ViewModel.ViewModelData)
+    func displayData(viewModel: Newsfeed.Model.ViewModel.ViewModelData)
 }
 
 class NewsfeedViewController: UIViewController, NewsfeedDisplayLogic {
@@ -17,43 +17,41 @@ class NewsfeedViewController: UIViewController, NewsfeedDisplayLogic {
     var interactor: NewsfeedBusinessLogic?
     var router: (NSObjectProtocol & NewsfeedRoutingLogic)?
     
-     private var feedViewModel = FeedViewModel.init(cells: [])
+    private var feedViewModel = FeedViewModel.init(cells: [])
 
     @IBOutlet weak var table: UITableView!
     
   // MARK: Setup
   
-  private func setup() {
-    let viewController        = self
-    let interactor            = NewsfeedInteractor()
-    let presenter             = NewsfeedPresenter()
-    let router                = NewsfeedRouter()
-    viewController.interactor = interactor
-    viewController.router     = router
-    interactor.presenter      = presenter
-    presenter.viewController  = viewController
-    router.viewController     = viewController
-  }
+    private func setup() {
+        let viewController        = self
+        let interactor            = NewsfeedInteractor()
+        let presenter             = NewsfeedPresenter()
+        let router                = NewsfeedRouter()
+        viewController.interactor = interactor
+        viewController.router     = router
+        interactor.presenter      = presenter
+        presenter.viewController  = viewController
+        router.viewController     = viewController
+    }
     
   // MARK: View lifecycle
   
-  override func viewDidLoad() {
-    super.viewDidLoad()
-    setup()
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        setup()
     
-    table.register(UINib(nibName: "NewsFeedCell", bundle: nil), forCellReuseIdentifier:  NewsFeedCell.reuseId)
+        table.register(UINib(nibName: "NewsFeedCell", bundle: nil), forCellReuseIdentifier:  NewsFeedCell.reuseId)
     
-    interactor?.makeRequest(request: .getNewsFeed)
-  }
+        interactor?.makeRequest(request: .getNewsFeed)
+    }
   
     func displayData(viewModel: Newsfeed.Model.ViewModel.ViewModelData) {
         switch viewModel {
-        
-        case .some:
-            print(".some ViewController")
-        case .displayNewsFeed:
-            print(".displayNewsFeed ViewController")
-        
+
+        case .displayNewsFeed(let feedViewModel):
+            self.feedViewModel = feedViewModel
+            table.reloadData()
         }
     }
   
